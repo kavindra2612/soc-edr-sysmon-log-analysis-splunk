@@ -1,0 +1,138 @@
+# 🛡️ SOC EDR Monitoring Dashboard using Splunk
+
+## 📌 Project Overview
+
+This project demonstrates a **SOC (Security Operations Center) Monitoring Dashboard**
+built using **Splunk Enterprise** and **Sysmon logs** on Windows Server 2019.
+
+The goal of this project is to simulate real-world SOC monitoring use cases such as:
+
+- Process Creation Monitoring
+- Suspicious PowerShell Detection
+- Network Connections Monitoring
+- Port Scan Detection
+- DNS Query Monitoring
+- File Creation Monitoring
+
+This project helps in understanding how SOC analysts investigate endpoint activity using SIEM.
+
+---
+
+## 🏗️ Lab Setup
+
+| Component | Details |
+|------------|----------|
+| SIEM | Splunk Enterprise 10.x |
+| Log Source | Sysmon |
+| OS | Windows Server 2019 (VMware) |
+| Index Used | edr |
+| Log Type | Microsoft-Windows-Sysmon/Operational |
+
+---
+
+# 🔍 Detection Use Cases & Queries
+
+---
+
+## 1️⃣ Process Creation Monitoring
+
+**Event ID 1 – Process Creation**
+
+```spl
+index=edr EventCode=1
+| stats count by Image
+| sort -count
+```
+📌 This query shows the most executed processes in the system.
+
+2️⃣ Suspicious PowerShell Execution Detection
+```spl
+index=edr EventCode=1 Image="*powershell*"
+| table _time Image CommandLine ParentImage
+```
+📌 Used to detect potentially suspicious PowerShell activity.
+
+3️⃣ Network Connections Monitoring
+```spl
+Event ID 3 – Network Connection
+
+index=edr EventCode=3
+| stats count by DestinationIp
+| sort -count
+```
+📌 Displays outbound network connections.
+
+4️⃣ Horizontal Port Scan Detection
+```spl
+index=edr EventCode=3
+| stats dc(DestinationPort) as unique_ports by SourceIp
+| where unique_ports > 10
+```
+📌 Detects hosts scanning multiple ports (Port Scanning Behavior).
+
+5️⃣ DNS Monitoring
+
+Event ID 22 – DNS Query
+```spl
+index=edr EventCode=22
+| stats count by QueryName
+| sort -count
+```
+📌 Monitors DNS queries to detect suspicious domains.
+
+6️⃣ File Creation Monitoring
+
+Event ID 11 – File Create
+```spl
+index=edr EventCode=11
+| stats count by TargetFilename
+| sort -count
+```
+📌 Detects newly created files in the system.
+
+📊 Dashboard Features
+
+📈 Bar Charts for process monitoring
+
+🥧 Pie Charts for distribution analysis
+
+📊 Network activity visualization
+
+🔎 Threat hunting queries
+
+🛡️ Real-time endpoint monitoring
+
+🎯 Skills Demonstrated
+
+## Splunk SPL Query Writing
+
+- Sysmon Log Analysis
+
+- Threat Hunting
+
+- Port Scan Detection Logic
+
+- PowerShell Monitoring
+
+- SOC Use Case Development
+
+- Dashboard Creation
+
+## 🚀 Project Outcome
+
+This project simulates a real-world SOC analyst workflow:
+
+- Log ingestion
+
+- Log parsing
+
+- Detection engineering
+
+- Dashboard visualization
+
+- Threat investigation
+
+ ## Author
+
+## - Kavindra Patel
+SOC & Cybersecurity Enthusiast
