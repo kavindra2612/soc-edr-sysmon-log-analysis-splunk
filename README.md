@@ -28,6 +28,18 @@ This project helps in understanding how SOC analysts investigate endpoint activi
 | Index Used | edr |
 | Log Type | Microsoft-Windows-Sysmon/Operational |
 
+## 🛡 MITRE ATT&CK Mapping
+
+| Detection Use Case | MITRE Technique | Technique ID |
+|--------------------|----------------|--------------|
+| Process Creation Monitoring | Command and Scripting Interpreter | T1059 |
+| Suspicious PowerShell Execution | PowerShell | T1059.001 |
+| Network Connections Monitoring | Application Layer Protocol | T1071 |
+| Port Scan Detection | Network Service Scanning | T1046 |
+| DNS Monitoring | Application Layer Protocol: DNS | T1071.004 |
+| File Creation Monitoring | Ingress Tool Transfer | T1105 |
+
+
 ---
 
 # 🔍 Detection Use Cases & Queries
