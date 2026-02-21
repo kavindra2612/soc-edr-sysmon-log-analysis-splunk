@@ -37,6 +37,8 @@ This project helps in understanding how SOC analysts investigate endpoint activi
 ## 1️⃣ Process Creation Monitoring
 
 **Event ID 1 – Process Creation**
+<h2> Process Creation Detection</h2>
+<img src="screenshots/Process Creation Detection.png" width="700">
 
 ```spl
 index=edr EventCode=1
@@ -46,6 +48,9 @@ index=edr EventCode=1
 📌 This query shows the most executed processes in the system.
 
 2️⃣ Suspicious PowerShell Execution Detection
+<h2> Suspicious PowerShell Execution</h2>
+<img src="screenshots/Suspicious PowerShell Execution.png" width="700">
+
 ```spl
 index=edr EventCode=1 Image="*powershell*"
 | table _time Image CommandLine ParentImage
@@ -53,6 +58,9 @@ index=edr EventCode=1 Image="*powershell*"
 📌 Used to detect potentially suspicious PowerShell activity.
 
 3️⃣ Network Connections Monitoring
+<h2>Network Connections Monitoring</h2>
+<img src="screenshots/Network Connections Monitoring.png" width="700">
+
 ```spl
 Event ID 3 – Network Connection
 
@@ -63,6 +71,9 @@ index=edr EventCode=3
 📌 Displays outbound network connections.
 
 4️⃣ Horizontal Port Scan Detection
+<h2> Horizontal Port Scan Detection</h2>
+<img src="screenshots/Horizontal Port Scan Detection.png" width="700">
+
 ```spl
 index=edr EventCode=3
 | stats dc(DestinationPort) as unique_ports by SourceIp
@@ -73,6 +84,9 @@ index=edr EventCode=3
 5️⃣ DNS Monitoring
 
 Event ID 22 – DNS Query
+<h2> DNS Monitoring</h2>
+<img src="screenshots/DNS Monitoring.png" width="700">
+
 ```spl
 index=edr EventCode=22
 | stats count by QueryName
@@ -83,6 +97,11 @@ index=edr EventCode=22
 6️⃣ File Creation Monitoring
 
 Event ID 11 – File Create
+
+<h2> File Creation Monitoring</h2>
+<img src="screenshots/File Creation Monitoring.png" width="700">
+
+
 ```spl
 index=edr EventCode=11
 | stats count by TargetFilename
@@ -90,17 +109,13 @@ index=edr EventCode=11
 ```
 📌 Detects newly created files in the system.
 
-📊 Dashboard Features
+## 📊 Dashboard Overview
 
-📈 Bar Charts for process monitoring
+This dashboard provides real-time monitoring of endpoint activity.
 
-🥧 Pie Charts for distribution analysis
+<h2>📊 Dashboard Overview</h2>
+<img src="screenshots/Dashboard.png" width="700">
 
-📊 Network activity visualization
-
-🔎 Threat hunting queries
-
-🛡️ Real-time endpoint monitoring
 
 🎯 Skills Demonstrated
 
