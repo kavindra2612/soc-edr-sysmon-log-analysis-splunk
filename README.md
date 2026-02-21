@@ -37,10 +37,12 @@ This project helps in understanding how SOC analysts investigate endpoint activi
 ## 1️⃣ Process Creation Monitoring
 
 **Event ID 1 – Process Creation**
+
+
 <p align="center">
-<h2> Process Creation Detection</h2>
-<img src="screenshots/Process Creation Detection.png" width="700">
+  <img src="screenshots/Process Creation Detection.png" width="700">
 </p>
+>
 
 ```spl
 index=edr EventCode=1
@@ -50,8 +52,9 @@ index=edr EventCode=1
 📌 This query shows the most executed processes in the system.
 
 2️⃣ Suspicious PowerShell Execution Detection
-<p align="center">
+
 <h2> Suspicious PowerShell Execution</h2>
+<p align="center">
 <img src="screenshots/Suspicious PowerShell Execution.png" width="700">
 </p>
 
@@ -62,8 +65,9 @@ index=edr EventCode=1 Image="*powershell*"
 📌 Used to detect potentially suspicious PowerShell activity.
 
 3️⃣ Network Connections Monitoring
-<p align="center">
+
 <h2>Network Connections Monitoring</h2>
+<p align="center">
 <img src="screenshots/Network Connections Monitoring.png" width="700">
 </p>
 
@@ -77,8 +81,9 @@ index=edr EventCode=3
 📌 Displays outbound network connections.
 
 4️⃣ Horizontal Port Scan Detection
-<p align="center">
+
 <h2> Horizontal Port Scan Detection</h2>
+<p align="center">
 <img src="screenshots/Horizontal Port Scan Detection.png" width="700">
 </p>
 
@@ -92,8 +97,9 @@ index=edr EventCode=3
 5️⃣ DNS Monitoring
 
 Event ID 22 – DNS Query
-<p align="center">
+
 <h2> DNS Monitoring</h2>
+<p align="center">
 <img src="screenshots/DNS Monitoring.png" width="700">
 </p>
 
@@ -107,8 +113,9 @@ index=edr EventCode=22
 6️⃣ File Creation Monitoring
 
 Event ID 11 – File Create
-<p align="center">
+
 <h2> File Creation Monitoring</h2>
+<p align="center">
 <img src="screenshots/File Creation Monitoring.png" width="700">
 </p>
 
